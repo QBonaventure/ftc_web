@@ -1,21 +1,29 @@
 {
-    "name": "raziel/ftc_public_website",
-    "type": "application",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Quentin Bonaventure",
-            "email": "quentin@bonaventure.xyz"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {
-        "nikic/fast-route": "^1.2",
-        "zendframework/zend-expressive": "^2.0",
-        "zendframework/zend-servicemanager": "^3.3",
-        "zendframework/zend-expressive-fastroute": "^2.1"
-    },
-    "require-dev": {
-        "zendframework/zend-expressive-tooling": "^0.4.4"
-    }
+	"name" : "raziel/ftc_public_website",
+	"type" : "application",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Quentin Bonaventure",
+			"email" : "quentin@bonaventure.xyz"
+		}
+	],
+	"minimum-stability" : "stable",
+	"require" : {
+		"nikic/fast-route" : "^1.2",
+		"erusev/parsedown" : "^1.6",
+		"zendframework/zend-config" : "^3.1",
+		"zendframework/zend-diactoros": "^1.6",
+		"zendframework/zend-expressive-zendviewrenderer": "^1.4",
+		"zendframework/zend-expressive": "^2.0",
+		"zendframework/zend-servicemanager": "^3.3",
+		"zendframework/zend-expressive-fastroute": "^2.1"
+	},
+	"require-dev" : {
+		"zendframework/zend-expressive-tooling" : "^0.4.4"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"FTC\\" : "src"
+		}
+	}
 }
