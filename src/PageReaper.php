@@ -21,10 +21,9 @@ class PageReaper
         $this->loader = $loader;
     }
     
-    
-    public function reap($filename)
+    public function reap($group, $filename)
     {
-        return $this->loader->loadFromFile($filename);
+        return $this->loader->loadFromFile($group, $filename);
     }
     
     public function convert(Page $page)

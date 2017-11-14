@@ -9,7 +9,7 @@ class LoaderException extends \Exception
 
     public static function fileNotFound($filename)
     {
-        throw LoaderException(sprintf(self::FILE_NOT_FOUND, $filename));
+        throw new LoaderException(sprintf(self::FILE_NOT_FOUND, $filename));
     }
     
 }
