@@ -31,7 +31,7 @@ class Explorer
         if (!isset($this->paths[$group][$filename])) {
             throw new \Exception();
         }
-        return join(DIRECTORY_SEPARATOR, [$this->basePath, $this->paths[$group][$filename]]);
+        return join(DIRECTORY_SEPARATOR, [$this->basePath, $this->paths[$group][$filename]['path']]);
     }
     
     public function getBasePath()
@@ -71,7 +71,9 @@ class Explorer
             $path = str_replace($this->basePath, '', $info->getPathname());
             $group = $this->getGroup($path);
             $filename = explode('.', basename($path))[0];
-            $this->paths[$group][$filename] = trim(str_replace($this->basePath, '', $info->getPathname()), '/');
+            
+            $this->paths[$group][$filename]['path'] = trim($path, '/');
+            $this->paths[$group][$filename]['name'] = $filename;
         }
     }
     

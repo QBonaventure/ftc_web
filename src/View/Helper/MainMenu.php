@@ -18,9 +18,9 @@ class MainMenu extends AbstractHelper
     
     public function __invoke()
     {
-        return $this->getView()->partial('app::menu');
-        return('zzzzzzzzzz');
-        return $this->explorer->getPaths();
+        $paths = $this->explorer->getPaths();
+        $filteredPaths = array_diff_key($paths, array_flip(['misc', 'media']));
+        return $this->getView()->partial('app::menu', ['paths' => $filteredPaths]);
     }
     
     
