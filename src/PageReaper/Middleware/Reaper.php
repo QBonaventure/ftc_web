@@ -5,6 +5,7 @@ use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use FTC\PageReaper;
+use Zend\Expressive\Template\TemplateRendererInterface;
 
 class Reaper implements MiddlewareInterface
 {
@@ -14,20 +15,23 @@ class Reaper implements MiddlewareInterface
         'bpmPage' => 'bpm',
     ];
     
+    private $template;
+    
     /**
      * @var PageReaper
      */
     private $reaper;
     
-    public function __construct($reaper)
+    public function __construct($reaper, TemplateRendererInterface $template)
     {
         $this->reaper = $reaper;
+        $this->template = $template;
     }
     
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         $routeName = $request->getAttribute('routeName');
-
+        
         if (array_key_exists($routeName, $this->routesToBeReaped)) {
             $fileName =  explode('.', $request->getAttribute('page'))[0];
             $page = $this->reaper->reap($this->routesToBeReaped[$routeName], $fileName);

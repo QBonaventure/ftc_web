@@ -4,6 +4,7 @@ namespace FTC;
 
 use FTC\PageReaper\Page;
 use FTC\PageReaper\Loader;
+use FTC\PageReaper\Explorer;
 
 class PageReaper
 {
@@ -15,10 +16,21 @@ class PageReaper
      */
     private $loader;
     
-    public function __construct($parser, Loader $loader)
+    /**
+     * @var Explorer
+     */
+    private $explorer;
+    
+    public function __construct($parser, Loader $loader, $explorer)
     {
         $this->parser = $parser;
         $this->loader = $loader;
+        $this->explorer = $explorer;
+    }
+    
+    public function getPaths()
+    {
+        return $this->explorer->getPaths();
     }
     
     public function reap($group, $filename)

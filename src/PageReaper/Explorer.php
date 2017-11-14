@@ -29,7 +29,7 @@ class Explorer
     public function getFilePath($group, $filename)
     {
         if (!isset($this->paths[$group][$filename])) {
-            throw new Exception();
+            throw new \Exception();
         }
         return join(DIRECTORY_SEPARATOR, [$this->basePath, $this->paths[$group][$filename]]);
     }

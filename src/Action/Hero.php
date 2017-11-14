@@ -31,7 +31,7 @@ class Hero implements MiddlewareInterface
         $page = $request->getAttribute('FTC\PageReaper\Middleware\Reaper');
         
         return new HtmlResponse($this->template->render('page::hero',['page' => $page]));
-//         var_dump());
+
         $wikiPage = $delegate->process($request);
         return $wikiPage;
     }

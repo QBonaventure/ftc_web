@@ -7,6 +7,7 @@ use Psr\Container\ContainerInterface;
 use Zend\Expressive\Application;
 use FTC\PageReaper\Middleware\Reaper;
 use FTC\Middleware\RouteObserver;
+use Zend\Expressive\Helper\ServerUrlMiddleware;
 
 class PipelineAndRoutesDelegator
 {
@@ -24,6 +25,7 @@ class PipelineAndRoutesDelegator
         // Setup pipeline:
 //         $app->pipe(ErrorHandler::class);
 //         $app->pipe(ServerUrlMiddleware::class);
+        $app->pipe(ServerUrlMiddleware::class);
         $app->pipeRoutingMiddleware();
 //         $app->pipe(ImplicitHeadMiddleware::class);
 //         $app->pipe(ImplicitOptionsMiddleware::class);
@@ -38,6 +40,7 @@ class PipelineAndRoutesDelegator
 //         $app->get('/api/ping', Action\PingAction::class, 'api.ping');
 //         $app->get('/h%C3%%A9ros/{hero_identifier}', \FTC\Action\Hero::class, 'heroPage');
         $app->get('/hero/{page}', \FTC\Action\Hero::class, 'heroPage');
+        $app->get('/bpm/{page}', \FTC\Action\Hero::class, 'bpmPage');
         
         return $app;
     }

@@ -28,6 +28,9 @@
             </div>
         </nav>
         <div class="row">
+        <?= $this->testparam ?>
+        	<?= $this->serverUrl('/') ?>
+        	<?= $this->serverUrl($this->url('heroPage', ['page' => 'li_ming'])) ?>
         	<?= $this->mainMenu(); ?>
             <div class="hidden-xs col-sm-3 col-md-2">
                 <div id="sidebar-left" data-spy="affix" data-offset-top="60">
