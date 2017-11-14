@@ -1,0 +1,39 @@
+version: "3.3"
+services:
+    web:
+        image: nginx:alpine
+        container_name: ftcweb_server
+        links:
+            - php
+        networks:
+            calendanet:
+                ipv4_address: 172.32.0.10
+        expose:
+            - "80"
+            - "443"
+        volumes:
+            - .:/code:z
+            - ./.docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:z
+    
+    php:
+        build:
+            context: .docker/fpm
+            dockerfile: dockerfile
+        container_name: ftcweb_php
+        env_file:
+            - .docker/config.env
+        expose:
+            - "9000"
+        networks:
+            calendanet:
+                ipv4_address: 172.32.0.20
+        volumes:
+            - .:/code:z
+            - /tmp/ftc_wiki:/wiki:z
+
+networks:
+    calendanet:
+        driver: bridge
+        ipam:
+          config:
+               - subnet: 172.32.0.0/16
