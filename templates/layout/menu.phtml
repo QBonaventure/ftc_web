@@ -1,17 +1,19 @@
-<ul>
-    <?php foreach ($this->paths as $group => $pages):
-    if ($group != 'heroes') continue; ?>
-        <li class="page-group">
-        	<?= $group ?>
-            <ul>
-            	<?php foreach ($pages as $name => $page): ?>
-            	    <li>
-            	    	<a href="<?= $this->serverUrl($this->url('heroPage', ['page' => $page['name']])) ?>">
-            	    		<?= $name. ' - '?>
-            	    	</a>
-            	    </li>
-            	<?php endforeach; ?>
-            </ul>
-        
-    <?php endforeach; ?>
-</ul>
+<nav id="top-menu"> 
+    <ul>
+        <?php foreach ($this->paths as $group => $pages): ?>
+            <li class="page-group">
+            	<?= $group ?>
+                <ul>
+                	<?php foreach ($pages as $name => $page): ?>
+                	    <li>
+                	    	<a href="<?= $this->serverUrl($this->url($this->routesMapping[$group], ['page' => $page['name']])).'.html' ?>">
+                	    		<?= $name ?>
+                	    	</a>
+                	    </li>
+                	<?php endforeach; ?>
+                </ul>
+            
+        <?php endforeach; ?>
+    </ul>
+</nav>
+    

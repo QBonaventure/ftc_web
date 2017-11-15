@@ -18,9 +18,11 @@ class RouteObserver implements MiddlewareInterface
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         $routeResult = $request->getAttribute('Zend\Expressive\Router\RouteResult');
-        $routeName = $routeResult->getMatchedRouteName();
         
-        $request = $request->withAttribute('routeName', $routeName);
+        if ($routeResult) {
+            $routeName = $routeResult->getMatchedRouteName();
+            $request = $request->withAttribute('routeName', $routeName);
+        }
         
         return $delegate->process($request);
     }

@@ -39,8 +39,11 @@ class PipelineAndRoutesDelegator
 //         $app->get('/', Action\HomePageAction::class, 'home');
 //         $app->get('/api/ping', Action\PingAction::class, 'api.ping');
 //         $app->get('/h%C3%%A9ros/{hero_identifier}', \FTC\Action\Hero::class, 'heroPage');
-        $app->get('/hero/{page}', \FTC\Action\Hero::class, 'heroPage');
-        $app->get('/bpm/{page}', \FTC\Action\Hero::class, 'bpmPage');
+        $app->get('/guides/hero/{page}', \FTC\Action\Hero::class, 'heroPage');
+        $app->get('/guides/bpm/{page}', \FTC\Action\Hero::class, 'bpmPage');
+        $app->get('/guides/cartes/{page}', \FTC\Action\Hero::class, 'mapPage');
+        $app->get('/guides/sticky_notes/{page}', \FTC\Action\Hero::class, 'stickyNotePage');
+        $app->get('/la_commu/membre/{page}', \FTC\Action\Hero::class, 'membrePage');
         
         return $app;
     }

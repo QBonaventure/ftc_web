@@ -13,7 +13,8 @@ class ReaperFactory
     {
         $reaper = $container->get(PageReaper::class);
         $template = $container->get(TemplateRendererInterface::class);
+        $config = $container->get('config')['reaper'];
         
-        return new Reaper($reaper, $template);
+        return new Reaper($reaper, $template, $config);
     }
 }

@@ -4,64 +4,20 @@
         <meta charset="utf-8">
         <title>proophessor-do</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--         <link rel="stylesheet" href="/css/bootstrap.slate.min.css"> -->
-<!--         <link rel="stylesheet" href="/css/bootstrap.datetimepicker.css"> -->
-<!--         <link rel="stylesheet" href="http://static.gamers.dev/css/style.css"> -->
         <link rel="stylesheet" href="/assets/css/style.css">
 <!--         <link rel="icon" href="http://static.gamers.dev/favicon.ico" /> -->
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
+    	<header>
+      		<?= $this->mainMenu(); ?>
+		</header>
 
-                    </ul>
-                </div><!--/.nav-collapse  -->
-            </div>
-        </nav>
-        <div class="row">
-        <?= $this->testparam ?>
-        	<?= $this->serverUrl('/') ?>
-        	<?= $this->serverUrl($this->url('heroPage', ['page' => 'li_ming'])) ?>
-        	<?= $this->mainMenu(); ?>
-            <div class="hidden-xs col-sm-3 col-md-2">
-                <div id="sidebar-left" data-spy="affix" data-offset-top="60">
-                    <ul class="sidebar-nav">
-                        <li>
-                            <a href="<?php 
-                            ?>">Stratégie</a>
-                        </li>
-                        <li>
-                            Guides Héros
-							<ul>
-								<li><a href="http://fear.dev/hero/li_li">Li Li</a></li>
-								<li><a href="http://fear.dev/hero/li_ming">Li Ming</a></li>
-							</ul>
-                        </li>
-                        <li>
-                            Builds
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-7 col-md-8">
-                <?= $this->content; ?>
-                <hr>
-                <footer>
-                    <p>&copy; 2017 by Coffee Game. All rights reserved.</p>
-                </footer>
-            </div>
-            <div class="col-sm-2 col-md-2">
-                <?php if (isset($this->sidebar_right)) echo $this->sidebar_right; ?>
-            </div>
-        </div>
+        <article class="col-sm-7 col-md-8">
+            <?= $this->content; ?>
+        </article>
+        <hr>
+        <footer>
+            <p>&copy; 2017 by Coffee Game. All rights reserved.</p>
+        </footer>
     </body>
 </html>

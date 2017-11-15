@@ -8,6 +8,7 @@ class ParseDownExtension extends \Parsedown
     function __construct()
     {
         $this->InlineTypes['&'][] = 'ColoredTag';
+        $this->InlineTypes['&'][] = 'Blahd';
     }
     
     private $coloredTextRegex = '#&lt;color\s\#(.{6,6})&gt;(.*)&lt;/color&gt;#';
@@ -16,6 +17,13 @@ class ParseDownExtension extends \Parsedown
         '22b14c' => 'green',
         '00a2e8' => 'blue'
     ];
+    
+    protected function inlineBlahd($excerpt)
+    {
+        if (preg_match('#{{page&gt;(.*)}}#', $excerpt['context'], $matches)) {
+            var_dump($excerpt);
+        }
+    }
     
     protected function inlineColoredTag($excerpt)
     {

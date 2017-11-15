@@ -10,10 +10,7 @@ use Zend\Expressive\Template\TemplateRendererInterface;
 class Reaper implements MiddlewareInterface
 {
     
-    private $routesToBeReaped = [
-        'heroPage' => 'heroes',
-        'bpmPage' => 'bpm',
-    ];
+    private $config;
     
     private $template;
     
@@ -22,8 +19,9 @@ class Reaper implements MiddlewareInterface
      */
     private $reaper;
     
-    public function __construct($reaper, TemplateRendererInterface $template)
+    public function __construct($reaper, TemplateRendererInterface $template, $config)
     {
+        $this->config = $config;
         $this->reaper = $reaper;
         $this->template = $template;
     }
@@ -31,10 +29,11 @@ class Reaper implements MiddlewareInterface
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         $routeName = $request->getAttribute('routeName');
+        $routesToGroup =  array_flip($this->config['groupsAndRoutesMapping']);
         
-        if (array_key_exists($routeName, $this->routesToBeReaped)) {
+        if (array_key_exists($routeName, $routesToGroup)) {
             $fileName =  explode('.', $request->getAttribute('page'))[0];
-            $page = $this->reaper->reap($this->routesToBeReaped[$routeName], $fileName);
+            $page = $this->reaper->reap($routesToGroup[$routeName], $fileName);
 
             $html = $this->reaper->convert($page);
             $request = $request->withAttribute(self::class, $html);

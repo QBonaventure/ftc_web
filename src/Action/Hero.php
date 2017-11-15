@@ -26,9 +26,8 @@ class Hero implements MiddlewareInterface
     
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
-        $request = $request->withAttribute('page', 'li_ming');
-        $request = $request->withAttribute('page_type', 'hero');
         $page = $request->getAttribute('FTC\PageReaper\Middleware\Reaper');
+        
         
         return new HtmlResponse($this->template->render('page::hero',['page' => $page]));
 
